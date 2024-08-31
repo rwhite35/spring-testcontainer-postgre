@@ -7,8 +7,5 @@ import jakarta.validation.constraints.NotEmpty;
 
 @ConfigurationProperties(prefix = "application")
 @Validated
-public record ApplicationProperties(
-        @NotEmpty String greetingImagesBucketName,
-        @NotEmpty String greetingImageUpdateTopic,
-        @NotEmpty String greetingServiceUrl) {
+public record ApplicationProperties(@NotEmpty String greetingServiceUrl) {
 }
