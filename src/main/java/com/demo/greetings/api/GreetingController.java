@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 class GreetingController {
     private final GreetingService greetingService;
 
+    // constructor
     GreetingController(GreetingService greetingService) {
         this.greetingService = greetingService;
     }
@@ -43,7 +44,7 @@ class GreetingController {
         var greeting = greetingService.getGreetingByName(username)
                 .orElseThrow(() -> NameDoesntExistException.withName(username));
 
-        // returns greeting.username, greeting.uuid
+        // returns greeting.username, greeting.uui
         return ResponseEntity.ok(greeting);
     }
 

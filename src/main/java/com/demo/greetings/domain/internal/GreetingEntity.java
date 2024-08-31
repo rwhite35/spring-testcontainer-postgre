@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-// import jakarta.validation.constraints.NotNull.message
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
@@ -21,7 +20,7 @@ public class GreetingEntity {
 
     @Column(nullable = false, unique = true)
     @NotEmpty(message = "UUID must not be empty")
-    private UUID uuid;
+    private UUID uui;
 
     @Nonnull
     @Column(nullable = false, unique = true)
@@ -32,9 +31,9 @@ public class GreetingEntity {
     }
 
     // object constructor
-    public GreetingEntity(Long id, UUID uuid, String username) {
+    public GreetingEntity(Long id, UUID uui, String username) {
         this.id = id;
-        this.uuid = uuid;
+        this.uui = uui;
         this.username = username;
     }
 
@@ -48,11 +47,11 @@ public class GreetingEntity {
     }
 
     public UUID getUuid() {
-        return uuid;
+        return uui;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setUuid(UUID uui) {
+        this.uui = uui;
     }
 
     public String getUsername() {

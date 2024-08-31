@@ -11,7 +11,7 @@ public interface GreetingRepository {
     Optional<GreetingEntity> findByName(String username);
 
     @Modifying
-    @Query("update GreetingsEntity g set g.uuid =:uuid where g.username =:username")
-    void updateGreetingUuid(@Param("username") String username, @Param("uuid") UUID uuid);
+    @Query("update GreetingsEntity g set g.uui =:uui where g.username =:username")
+    void updateGreetingUuid(@Param("username") String username, @Param("uui") UUID uui);
 
 }
