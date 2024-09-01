@@ -3,7 +3,7 @@ package com.demo.greetings.domain;
 import com.demo.greetings.domain.models.CreateGreetingRequest;
 import com.demo.greetings.domain.models.Greeting;
 import java.util.Optional;
-import java.util.UUID;
+// import java.util.UUID;
 
 public interface GreetingService {
 
@@ -14,5 +14,5 @@ public interface GreetingService {
     Optional<Greeting> getGreetingByName(String username);
 
     // see GreetingRepository.
-    void updateGreetingUuid(UUID uui, String username);
+    // void updateGreetingUuid(UUID uui, String username);
 }

@@ -5,6 +5,6 @@ import org.springframework.web.service.annotation.GetExchange;
 
 public interface GreetingServiceClient {
 
-    @GetExchange("/api/greeting/{username}")
+    @GetExchange("/api/greetings/{username}")
     GreetingName getUsername(@PathVariable String username);
 }

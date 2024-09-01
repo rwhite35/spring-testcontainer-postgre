@@ -11,7 +11,6 @@ import java.net.URI;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +34,7 @@ class GreetingController {
 
     @PostMapping
     ResponseEntity<Void> createGreeting(@Validated @RequestBody CreateGreetingRequest request) {
+
         greetingService.createGreeting(request);
 
         // current context path defined in RestClientConfig bean which

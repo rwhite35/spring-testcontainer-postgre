@@ -46,11 +46,11 @@ public class GreetingEntity {
         this.id = id;
     }
 
-    public UUID getUuid() {
+    public UUID getUui() {
         return uui;
     }
 
-    public void setUuid(UUID uui) {
+    public void setUui(UUID uui) {
         this.uui = uui;
     }
 
