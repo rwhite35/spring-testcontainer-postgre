@@ -11,19 +11,36 @@ package com.demo.greetings;
 // import org.testcontainers.containers.KafkaContainer;
 //
 import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 //
 import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.containers.PostgreSQLContainer;
+import io.github.microcks.testcontainers.MicrocksContainer;
 
 @TestConfiguration(proxyBeanMethods = false)
 public class TestcontainersConfiguration {
 
+	// Postgres container instance, requires Docker daemon running
 	@Bean
 	@ServiceConnection
 	PostgreSQLContainer<?> postgresContainer() {
 		return new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"));
+	}
+
+	// Mock Greeting Service OpenAPI service.
+	// registering the Microcks provided mock endpoint as
+	// `application.greeting-service-url`.
+	// call `greeting-service` from application routes to the Microcks endpoint.
+	@Bean
+	MicrocksContainer microcksContainer(DynamicPropertyRegistry registry) {
+		MicrocksContainer microcks = new MicrocksContainer("quay.io/microcks/microcks-uber:1.8.1")
+				.withMainArtifacts("greeting-openapi.yaml")
+				.withAccessToHost(true);
+
+		registry.add("application.greeting-service-url", () -> microcks.getRestMockEndpoint("Greeting Service", "1.0"));
+		return microcks;
 	}
 
 	/**

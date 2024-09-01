@@ -38,15 +38,20 @@ paths:
                     id: 2
                     uui: 103fc1ea-ab5f-476e-88fa-5bfaeb11c06a
                     username: Ivorjour
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Username1:
+                  value: ""
 components:
   schemas:
     Greeting:
       title: Root Type for Greeting
       type: object
       properties:
-        id:
-          description: Unique identifier of this greeting
-          type: number
         uui:
           description: UUID for this greeting
           type: string
@@ -54,7 +59,6 @@ components:
           description: Users Name for this greeting
           type: string
       required:
-        - id
         - uui
         - username
       additionalProperties: false

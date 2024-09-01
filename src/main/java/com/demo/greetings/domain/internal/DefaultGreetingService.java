@@ -36,12 +36,17 @@ public class DefaultGreetingService implements GreetingService {
 
     @Override
     public Optional<Greeting> getGreetingByName(String username) {
+        if (this.isGreetingAvailable(username)) {
+            System.out.println("Greeting is available.");
+        } else {
+            return Optional.empty();
+        }
+
         Optional<GreetingEntity> greetingEntity = greetingRepository.findByUsername(username);
         if (greetingEntity.isEmpty()) {
             return Optional.empty();
         }
         return greetingEntity.map(this::toGreeting);
-
     }
 
     private boolean isGreetingAvailable(String username) {
