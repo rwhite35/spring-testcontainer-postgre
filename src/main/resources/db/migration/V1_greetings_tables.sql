@@ -1,12 +1,12 @@
 create table
-    names (
+    greetings (
         id bigserial primary key,
         uui uuid default uuid_generated_v4 (),
         username varchar not null unique
     );
 
 insert into
-    names (uui, username)
+    greetings (uui, username)
 values
     (
         '86c790b1-19be-41c1-bf38-d22c6fe2ced1',

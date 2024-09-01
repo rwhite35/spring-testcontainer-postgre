@@ -9,9 +9,8 @@ public class TestGreetingsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication
-				.from(GreetingApplication::main)
+				.from(Application::main)
 				.with(TestcontainersConfiguration.class)
 				.run(args);
 	}
-
 }

@@ -14,5 +14,5 @@ public interface GreetingService {
     Optional<Greeting> getGreetingByName(String username);
 
     // see GreetingRepository.
-    void updateGreetingUuid(String username, UUID uui);
+    void updateGreetingUuid(UUID uui, String username);
 }
