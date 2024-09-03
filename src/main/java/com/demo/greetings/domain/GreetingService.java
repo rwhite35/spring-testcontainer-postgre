@@ -7,12 +7,14 @@ import java.util.Optional;
 
 public interface GreetingService {
 
-    // creates a new record with username and uuid
+    // record expects non name as form input,
+    // insert auto increments id, auto generates uuid
     void createGreeting(CreateGreetingRequest request);
 
     // returns greeting.username, greeting.uuid if found
-    Optional<Greeting> getGreetingByName(String username);
+    Optional<Greeting> readGreeting(String username);
 
-    // see GreetingRepository.
-    // void updateGreetingUuid(UUID uui, String username);
+    // stubbed for later
+    // boolean updateGreeting(String name);
+    // boolean deleteGreeting(String name);
 }

@@ -1,7 +1,5 @@
 package com.demo.greetings.domain.internal;
 
-import java.util.UUID;
-
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "greetings")
@@ -18,22 +15,18 @@ public class GreetingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    @NotEmpty(message = "UUID must not be empty")
-    private UUID uui;
-
     @Nonnull
     @Column(nullable = false, unique = true)
     private String username;
 
     // singleton initializer
     public GreetingEntity() {
+        System.out.println("GreetingEntity initialized!");
     }
 
     // object constructor
-    public GreetingEntity(Long id, UUID uui, String username) {
+    public GreetingEntity(Long id, String username) {
         this.id = id;
-        this.uui = uui;
         this.username = username;
     }
 
@@ -46,19 +39,12 @@ public class GreetingEntity {
         this.id = id;
     }
 
-    public UUID getUui() {
-        return uui;
-    }
-
-    public void setUui(UUID uui) {
-        this.uui = uui;
-    }
-
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String name) {
+        System.out.println("GreetingEntity setting username with" + name);
         this.username = name;
     }
 }

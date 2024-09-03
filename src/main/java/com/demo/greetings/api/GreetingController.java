@@ -39,6 +39,7 @@ class GreetingController {
 
     @PostMapping
     ResponseEntity<Void> createGreeting(@Validated @RequestBody CreateGreetingRequest request) {
+        System.out.println("GC received new greeting request:" + request);
 
         // greetingService.createGreeting(request);
 
@@ -50,20 +51,23 @@ class GreetingController {
                 .buildAndExpand(request.username())
                 .toUri();
 
-        System.out.println("GreetingController uri: " + uri);
+        System.out.println("GC returning response entity for exchange as uri: " + uri);
         return ResponseEntity.created(uri).build();
     }
 
+    // GET Method
     @GetMapping("/{username}")
-    ResponseEntity<Greeting> getGreetingByName(@PathVariable String username) {
+    ResponseEntity<Greeting> readGreeting(@PathVariable String username) {
+        System.out.println("GC received read username:" + username);
         /*
-         * var greeting = greetingService.getGreetingByName(username)
+         * var greeting = greetingService.readGreeting(username)
          * .orElseThrow(() -> NameDoesntExistException.withName(username));
          */
-        var greeting = new Greeting(null, null, username);
+        var greeting = new Greeting(null, username);
 
         // returns greeting.username, greeting.uui
         // return ResponseEntity.ok(greeting);
+        System.out.println("GC returns response entity for exchange as Greeting.username:" + username);
         return ResponseEntity.ok(greeting);
     }
 

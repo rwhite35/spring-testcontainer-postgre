@@ -21,6 +21,7 @@ public class RestClientConfig {
 
     @Bean
     GreetingServiceClient greetingServiceProxy(ApplicationProperties properties) {
+
         RestClient restClient = RestClient.create(properties.greetingServiceUrl());
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
                 .build();
