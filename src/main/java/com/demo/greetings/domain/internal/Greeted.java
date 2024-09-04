@@ -18,14 +18,15 @@ import jakarta.persistence.Table;
 @Table(name = "GREETED")
 public class Greeted {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Nonnull
     @Column(nullable = false, unique = true)
     private String username;
 
-    // singleton initializer
+    // constructor doesn't accept parameters, must
+    // use setter before passing this entity to a consumer
     public Greeted() {
         System.out.println("Greeted initialized!");
     }

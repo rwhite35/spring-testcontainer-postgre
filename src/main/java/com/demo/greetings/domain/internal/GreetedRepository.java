@@ -11,4 +11,7 @@ public interface GreetedRepository extends JpaRepository<Greeted, Long> {
     // selects matching user name and return all fields if found
     @Query("select u from Greeted u where u.username=?1")
     List<Greeted> findByUsername(@Param("username") String username);
+
+    // JpaRepository.save(request) CrudRepository
+    // see https://www.baeldung.com/spring-data-crud-repository-save
 }

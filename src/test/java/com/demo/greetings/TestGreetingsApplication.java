@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 
 public class TestGreetingsApplication {
 
-	// NOTE: Is actaully starting GreetingApplication
-	// from within the TestGreetingsAccplication!
+	// Build/Run test environment to also start
+	// Greeting API service (Application) from this main!
 
 	public static void main(String[] args) {
 		SpringApplication
