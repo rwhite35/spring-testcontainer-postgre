@@ -20,12 +20,12 @@ public class RestClientConfig {
     // an unsatified dependency error if not configure correctly.
 
     @Bean
-    GreetingServiceClient greetingServiceProxy(ApplicationProperties properties) {
+    GreetingsServiceClient greetingsServiceProxy(ApplicationProperties properties) {
 
-        RestClient restClient = RestClient.create(properties.greetingServiceUrl());
+        RestClient restClient = RestClient.create(properties.greetingsServiceUrl());
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
                 .build();
 
-        return factory.createClient(GreetingServiceClient.class);
+        return factory.createClient(GreetingsServiceClient.class);
     }
 }

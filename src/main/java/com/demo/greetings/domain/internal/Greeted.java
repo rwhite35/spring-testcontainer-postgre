@@ -6,11 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+// import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
+// Table name should match class name if planning to use JpaRespository API.
+// specially if using NamedQuery or Query annotation
+
+// @NamedQuery(name = "Greeted.findByUsername", query = "select g from Greeted g
+// where g.username = ?1")
 @Entity
-@Table(name = "greetings")
-public class GreetingEntity {
+@Table(name = "GREETED")
+public class Greeted {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,12 +26,12 @@ public class GreetingEntity {
     private String username;
 
     // singleton initializer
-    public GreetingEntity() {
-        System.out.println("GreetingEntity initialized!");
+    public Greeted() {
+        System.out.println("Greeted initialized!");
     }
 
     // object constructor
-    public GreetingEntity(Long id, String username) {
+    public Greeted(Long id, String username) {
         this.id = id;
         this.username = username;
     }
@@ -44,7 +50,7 @@ public class GreetingEntity {
     }
 
     public void setUsername(String name) {
-        System.out.println("GreetingEntity setting username with" + name);
+        System.out.println("Greeted setting username with" + name);
         this.username = name;
     }
 }

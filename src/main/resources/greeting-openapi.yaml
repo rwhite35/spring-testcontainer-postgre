@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  title: Greeting Service
+  title: Greetings Service
   version: 1.0
   description: API definition of Catalog Service
   license:
@@ -31,13 +31,11 @@ paths:
                 Username1:
                   value:
                     id: 1
-                    uui: 86c790b1-19be-41c1-bf38-d22c6fe2ced1
                     username: Vizier
                 Username2:
                   value:
                     id: 2
-                    uui: 103fc1ea-ab5f-476e-88fa-5bfaeb11c06a
-                    username: Ivorjour
+                    username: Victor
         "500":
           content:
             application/json:
@@ -52,13 +50,9 @@ components:
       title: Root Type for Greeting
       type: object
       properties:
-        uui:
-          description: UUID for this greeting
-          type: string
         username:
           description: Users Name for this greeting
           type: string
       required:
-        - uui
         - username
       additionalProperties: false

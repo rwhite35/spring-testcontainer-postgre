@@ -1,22 +1,23 @@
 package com.demo.greetings.domain.internal;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.demo.greetings.clients.greeting.GreetingName;
-import com.demo.greetings.clients.greeting.GreetingServiceClient;
+import com.demo.greetings.clients.greeting.GreetingsServiceClient;
 import com.demo.greetings.domain.GreetingService;
 import com.demo.greetings.domain.models.CreateGreetingRequest;
 import com.demo.greetings.domain.models.Greeting;
 
 public class DefaultGreetingService implements GreetingService {
 
-    private final GreetingRepository greetingRepository;
-    private final GreetingServiceClient greetingServiceClient;
+    private final GreetedRepository GreetedRepository;
+    private final GreetingsServiceClient greetingServiceClient;
 
     public DefaultGreetingService(
-            GreetingRepository greetingRepository,
-            GreetingServiceClient greetingServiceClient) {
-        this.greetingRepository = greetingRepository;
+            GreetedRepository GreetedRepository,
+            GreetingsServiceClient greetingServiceClient) {
+        this.GreetedRepository = GreetedRepository;
         this.greetingServiceClient = greetingServiceClient;
     }
 
@@ -27,17 +28,17 @@ public class DefaultGreetingService implements GreetingService {
     public void createGreeting(CreateGreetingRequest request) {
         System.out.println("DGS received create new greeting request!");
 
-        GreetingEntity entity = new GreetingEntity();
+        Greeted entity = new Greeted();
         entity.setUsername(request.username());
 
-        greetingRepository.save(entity);
+        GreetedRepository.save(entity);
     }
 
     // wrapper method for reading name from saved source
     // listens for route domain/{username}
     //
     @Override
-    public Optional<Greeting> readGreeting(String username) {
+    public Optional<Greeting> responseGreeting(String username) {
         if (this.isNameReceived(username)) {
             System.out.println("DGS Name was received!");
         } else {
@@ -45,11 +46,15 @@ public class DefaultGreetingService implements GreetingService {
         }
 
         // next must validate before saving
-        Optional<GreetingEntity> greetingEntity = greetingRepository.findByUsername(username);
-        if (greetingEntity.isEmpty()) {
+        List<Greeted> greetlist = GreetedRepository.findByUsername(username);
+        if (greetlist.get(0).getUsername().isEmpty()) {
             System.out.println("DGS Received name is not in repository!");
+            return Optional.of(new Greeting(null, null));
+
+        } else {
+            System.out.println("DGS Received name is in repository! With record id " + greetlist.toString());
+            return Optional.of(new Greeting(greetlist.get(0).getId(), username));
         }
-        return greetingEntity.map(this::toGreeting);
     }
 
     // determines if client parsed name parameter from URI
@@ -67,7 +72,7 @@ public class DefaultGreetingService implements GreetingService {
 
     // converts entity to greeting record
     //
-    private Greeting toGreeting(GreetingEntity entity) {
-        return new Greeting(entity.getId(), entity.getUsername());
-    }
+    // private Greeting toGreeting(Greeted entity) {
+    // return new Greeting(entity.getId(), entity.getUsername());
+    // }
 }

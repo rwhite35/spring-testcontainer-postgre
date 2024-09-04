@@ -39,7 +39,10 @@ public class TestcontainersConfiguration {
 				.withMainArtifacts("greeting-openapi.yaml")
 				.withAccessToHost(true);
 
-		registry.add("application.greeting-service-url", () -> microcks.getRestMockEndpoint("Greeting Service", "1.0"));
+		// see application.properties for request to Microcks URL:Port
+		// with mock data defined in greeting-openapi.yaml.
+		registry.add("application.greetings-service-url",
+				() -> microcks.getRestMockEndpoint("Greetings Service", "1.0"));
 		return microcks;
 	}
 
