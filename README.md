@@ -1,11 +1,10 @@
 ### Spring Boot 3.3.3, Testcontainers, Postgres:latest
 
-A REST API service and database backend for local web application development. The `Greeting Service` project is an extension of the `Maven-Spring-Tomcat` web application project providing API services and for test driven development. However, it can stand on its own as an example of convenient local development through containerization.
-`Greeting API Service` depends on the following technologies:
+A REST API service and database backend for local web application development. The `Greeting Service` project is an extension of the `Maven-Spring-Tomcat` web application project for providing API services and test driven development capabilities. However, it also stands on its own and is an example of convenient local development through containerization. `Greeting API Service` project depends on the following technologies:
 
 - `Docker Desktop` image and container provider
 - `Boot-Spring-Data-Jpa` persistent data provider using Hibernate framework
-- `Boot-Spring-Testcontainers` data and API service mocking support for automated testing
+- `Boot-Spring-Testcontainers` data and API service mocking support (via Microcks) for automated testing
 - `PostgreSQL` persistent data store for API service input/output
 
 --
