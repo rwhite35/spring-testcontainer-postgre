@@ -11,7 +11,7 @@ A REST API service and database backend for local web application development. T
 
 ### About the Project
 
-This project depends on Spring framework and Spring Boot for the majority of its REST API functionality. It doesn't provide any user interface but does handle endpoint request and response. There are two endpoints configured for this initial release and serve as the general pattern for building out many more.
+This project depends on Spring framework and Spring Boot for the majority of its REST API functionality. It doesn't provide any user interface but does handle endpoint request and response. There are two endpoints configured for this initial release, that also serve as a general pattern for building out additional services.
 
 - [Create Greeting](https://github.com/rwhite35/sping-testcontainer-postgres)<br />
   - Handles `/api/greetings` POST request with data having one key/value for username:String
