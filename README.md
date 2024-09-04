@@ -1,6 +1,6 @@
 ### Spring Boot 3.3.3, Testcontainers, Postgres:latest
 
-A REST API service and database backend for local web application development. The `Greeting Service` project is an extension of the `Maven-Spring-Tomcat` web application project for providing API services and test driven development capabilities. However, it also stands on its own and is an example of convenient local development through containerization. `Greeting API Service` project depends on the following technologies:
+A REST API service and database backend for local web application development. The `Greeting API Service` project is an extension of the `Maven-Spring-Tomcat` web application project as an API services provider for building out that projects capabilities. However, `Greeting API Service` also stands on its own as a testable API service and is an example of convenient local development through containerization. `Greeting API Service` project depends on the following technologies:
 
 - `Docker Desktop` image and container provider
 - `Boot-Spring-Data-Jpa` persistent data provider using Hibernate framework
@@ -11,12 +11,14 @@ A REST API service and database backend for local web application development. T
 
 ### About the Project
 
-This project depends on Spring framework and Spring Boot for the majority of its REST API functionality. It doesn't provide any user interface but does handle endpoint request and response. There are two endpoints configured for this initial release, that also serve as a general pattern for building out additional services.
+This project depends on `Spring framework` and `Spring Boot` for the majority of the REST API functionality. It doesn't provide any user interface but does handle endpoint request and response as JSON objects. There are two endpoints configured for this initial release to serve as a general model/pattern for building out additional services.
 
 - [Create Greeting](https://github.com/rwhite35/sping-testcontainer-postgres)<br />
   - Handles `/api/greetings` POST request with data having one key/value for username:String
 
--[Read Greeted Name](https://github.com/rwhite35/sping-testcontainer-postgres)<br /> - Handles `/api/greetings/{username}` GET request with URI parameter the name to search in the database.
+-[Read Greeted Name](https://github.com/rwhite35/sping-testcontainer-postgres)<br />
+
+- Handles `/api/greetings/{username}` GET request with URI parameter the name to search in the database.
 
 Setup and development notes are included in the docs/ sub directory in PDF format for portability. The majority of the projects technical details are included in two documents, API Setup and Database Setup. Some screen grabs have also been included for context.
 
@@ -37,6 +39,7 @@ Setup and development notes are included in the docs/ sub directory in PDF forma
    - A String framework library for configuring and supporting a development environment be that local or cloud. Spring Boot is similar Terraform but specific to Spring Framework project. It also provides plumbing for much of the projects functionality.
 
 4. [Postgres](https://www.postgresql.org)<br />
+
    - Is pulled from a docker image (postgres:latest) which targets the latest stable Postgres release (v16). Initially, the postgres:latest instance will have a default table called `test` with User `test` and Password `test`. That can all be configured but on the first runs instance, that will be the setup.
 
 --
