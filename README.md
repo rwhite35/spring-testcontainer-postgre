@@ -1,6 +1,6 @@
 ### Spring Boot 3.3.3, Testcontainers, Postgres:latest
 
-A REST API service and database backend for local web application development. The `Greeting API Service` project is a companion project for `Maven-Spring-Tomcat` web application project to provide local API services and database backing. However, `Greeting API Service` also stands on its own as a testable API service and is an example of single purpose applications, and local development using containerization. `Greeting API Service` project depends on the following technologies:
+A REST API service and database backend for local web application development. The `Greeting API Service` project is a companion project for `Maven-Spring-Tomcat` web application as its local development API service and database backing. However, `Greeting API Service` also stands on its own as a testable API service and is an example of single purpose applications, and local development using containerization. `Greeting API Service` project depends on the following technologies:
 
 - `Docker Desktop` image and container provider
 - `Boot-Spring-Data-Jpa` persistent data provider using Hibernate framework
@@ -36,7 +36,7 @@ Setup and development notes are included in the docs/ sub directory in PDF forma
 
 3. [Sping Boot](https://spring.io/projects/spring-boot)<br />
 
-   - A String framework library for configuring and supporting a development environment be that local or cloud. Spring Boot is similar Terraform but specific to Spring Framework project. It also provides plumbing for much of the projects functionality.
+   - A Spring framework library for configuring and supporting a development environment be that local or cloud. Spring Boot is similar Terraform but specific to Spring Framework project. It also provides plumbing for much of the projects functionality.
 
 4. [Postgres](https://www.postgresql.org)<br />
 
@@ -46,6 +46,6 @@ Setup and development notes are included in the docs/ sub directory in PDF forma
 
 ### BUILD/RUN DEBUG
 
-The build and run - which will creates each required container - simple select the Testcontainers TestGreetingsApplication file with its main() method and run that in debug mode. Once the process has completed, there should be four containers with one being postgres:latest and another Microcks-Uber:1.8.1 for mocking data for automated testing. If that's given, follow the steps in Database Setup to test the database and connection, create a new record and read in a records username value.
+Build and run TestGreetingsApplication in debug mode - which will instance the required containers - including Greetings API Service application. TestGreetingsApplication main() method calls Greetings API Service main(), running both applications in parallel. Once the process has completed, there should be four containers with one being postgres:latest and another Microcks-Uber:1.8.1 for mocking data for automated testing. For more details and quick start instructions, check out `Database Setup` and `API Setup` under the doc folder.
 
 Enjoy!
