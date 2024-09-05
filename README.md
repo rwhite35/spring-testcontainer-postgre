@@ -1,24 +1,24 @@
 ### Spring Boot 3.3.3, Testcontainers, Postgres:latest
 
-A REST API service and database backend for local web application development. The `Greeting API Service` project is an extension of the `Maven-Spring-Tomcat` web application project as an API services provider for building out that projects capabilities. However, `Greeting API Service` also stands on its own as a testable API service and is an example of convenient local development through containerization. `Greeting API Service` project depends on the following technologies:
+A REST API service and database backend for local web application development. The `Greeting API Service` project is a companion project for `Maven-Spring-Tomcat` web application project to provide local API services and database backing. However, `Greeting API Service` also stands on its own as a testable API service and is an example of single purpose applications, and local development using containerization. `Greeting API Service` project depends on the following technologies:
 
 - `Docker Desktop` image and container provider
 - `Boot-Spring-Data-Jpa` persistent data provider using Hibernate framework
-- `Boot-Spring-Testcontainers` data and API service mocking support (via Microcks) for automated testing
+- `Boot-Spring-Testcontainers` data and API service mocking (via Microcks) for automated testing
 - `PostgreSQL` persistent data store for API service input/output
 
 --
 
 ### About the Project
 
-This project depends on `Spring framework` and `Spring Boot` for the majority of the REST API functionality. It doesn't provide any user interface but does handle endpoint request and response as JSON objects. There are two endpoints configured for this initial release to serve as a general model/pattern for building out additional services.
+This project depends on `Spring framework` for the majority of the REST API functionality, and `Spring Boot` for configuration and deployment. It doesn't provide any user interface but does handle endpoint request and response and database CRUD functionality. There are two endpoints configured for this initial release. The service/endpoints serve as a general pattern for building out additional service/endpoints.
 
-- [Create Greeting](https://github.com/rwhite35/sping-testcontainer-postgres)<br />
-  - Handles `/api/greetings` POST request with data having one key/value for username:String
+- [Create Greeting](https://github.com/rwhite35/sping-testcontainer-postgres/blob/master/src/main/java/com/demo/greetings/api/GreetingController.java)<br />
 
--[Read Greeted Name](https://github.com/rwhite35/sping-testcontainer-postgres)<br />
+  - Handles `/api/greetings` POST request with a data object having one key/value for username:String input.
 
-- Handles `/api/greetings/{username}` GET request with URI parameter the name to search in the database.
+- [Read Greeted Name](https://github.com/rwhite35/sping-testcontainer-postgres/blob/master/src/main/java/com/demo/greetings/api/GreetingController.java)<br />
+  - Handles `/api/greetings/{username}` GET request with URI parameter a user name to search for in the database.
 
 Setup and development notes are included in the docs/ sub directory in PDF format for portability. The majority of the projects technical details are included in two documents, API Setup and Database Setup. Some screen grabs have also been included for context.
 
